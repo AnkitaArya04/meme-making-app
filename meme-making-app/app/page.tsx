@@ -13,9 +13,41 @@ export default function Home() {
           </p>
         </div>
 
-          <div className="">
-
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Controls Panel */}
+            <div className="lg:col-span-1 space-y-4">
+            <UploadControls
+              onImageUpload={handleImageUpload}
+              onReset={resetCanvas}
+            />
+            <TextControls
+              hasImage={!!image}
+              onAddText={addText}
+              selectedId={selectedId}
+              textElements={textElements}
+              onUpdateText={updateText}
+              onDeleteText={deleteText}
+            />
+            <ExportControls hasImage={!!image} onExport={exportImage} />
           </div>
+           {/* Canvas Area */}
+          <div className="lg:col-span-2">
+            <Card>
+              <CardHeader>
+                <CardTitle>Canvas</CardTitle>
+              </CardHeader>
+              <CardContent className="flex justify-center">
+                <MemeCanvas
+                  image={image}
+                  stageRef={stageRef}
+                  stageSize={stageSize}
+                  textElements={textElements}
+                  onSelectText={setSelectedId}
+                />
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       </div>
     </div>
   );
