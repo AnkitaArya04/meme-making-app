@@ -1,3 +1,4 @@
+"use client"
 import { StageSize, TextElement } from "@/types/meme";
 import { Upload } from "lucide-react";
 import { Layer, Stage, Image as KonvaImage } from "react-konva";
